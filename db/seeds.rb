@@ -1,3 +1,4 @@
+
 teacher1 = {
   first_name: "Jon",
   last_name: "Pabico",
@@ -112,3 +113,4 @@ question10 << Choice.create(body: "Ah-ah-ah", correct:true)
 question10 << Choice.create(body: "doop", correct:false)
 question10 << Choice.create(body: "beep", correct:false)
 question10 << Choice.create(body: "boop", correct:false)
+
