@@ -81,4 +81,11 @@ ActiveRecord::Schema.define(version: 20141011190940) do
     t.datetime "updated_at"
   end
 
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
