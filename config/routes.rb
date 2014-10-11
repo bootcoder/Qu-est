@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :choices
 
-  resources :questions
-
-  resources :quizzes
+  resources :quizzes do
+    resources :questions
+  end
 
   resources :courses
 
@@ -11,11 +11,15 @@ Rails.application.routes.draw do
 
   resources :teachers
 
+  post "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  post "sessions/create" => "sessions#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'students#welcome'
+  root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -65,11 +69,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :courses
-  resources :tests do
-    resources :questions
-  end
-  post "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  post "sessions/create" => "sessions#create"
 end
