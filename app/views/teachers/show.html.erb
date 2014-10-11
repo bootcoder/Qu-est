@@ -23,4 +23,6 @@
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
 
-
+<% @courses.each do |course|  %>
+	<h3><%= link_to "#{course.name}", course_path(course.id) %></h3>
+<% end %>
