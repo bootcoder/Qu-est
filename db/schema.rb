@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141011190940) do
   enable_extension "plpgsql"
 
   create_table "choices", force: true do |t|
-    t.string     "body"
+    t.text     "body"
     t.boolean  "correct"
     t.integer  "question_id"
     t.datetime "created_at"
@@ -25,22 +25,22 @@ ActiveRecord::Schema.define(version: 20141011190940) do
   end
 
   create_table "courses", force: true do |t|
-    t.string     "name"
-    t.string     "description"
+    t.string   "name"
+    t.text     "description"
     t.integer  "teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "questions", force: true do |t|
-    t.string     "body"
+    t.text     "body"
     t.integer  "quiz_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "quizzes", force: true do |t|
-    t.string     "name"
+    t.string   "name"
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,28 +62,21 @@ ActiveRecord::Schema.define(version: 20141011190940) do
   end
 
   create_table "students", force: true do |t|
-    t.string     "first_name"
-    t.string     "last_name"
-    t.string     "email"
-    t.string     "phone"
-    t.string     "password"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "teachers", force: true do |t|
-    t.string     "first_name"
-    t.string     "last_name"
-    t.string     "email"
-    t.string     "phone"
-    t.string     "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.integer  "year"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
