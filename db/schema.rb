@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 20141011190940) do
     t.datetime "updated_at"
   end
 
+  create_table "student_quzzes", id: false, force: true do |t|
+    t.integer "quiz_id"
+    t.integer "student_id"
+  end
+
+  create_table "student_responses", id: false, force: true do |t|
+    t.integer "student_id"
+    t.integer "choice_id"
+  end
+
+  create_table "student_teacher_courses", id: false, force: true do |t|
+    t.integer "student_id"
+    t.integer "teacher_id"
+    t.integer "course_id"
+  end
+
   create_table "students", force: true do |t|
     t.text     "first_name"
     t.text     "last_name"
