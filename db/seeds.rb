@@ -1,3 +1,4 @@
+
 teacher1 = {
   first_name: "Jon",
   last_name: "Pabico",
@@ -112,5 +113,3 @@ Choice.create(body: "Ah-ah-ah", correct:true, question_id: question10.id)
 Choice.create(body: "doop", correct:false, question_id: question10.id)
 Choice.create(body: "beep", correct:false, question_id: question10.id)
 Choice.create(body: "boop", correct:false, question_id: question10.id)
-
->>>>>>> Stashed changes
