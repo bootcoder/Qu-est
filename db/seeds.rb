@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+t = Teacher.create(last_name: "Pabico")
+s = Student.create(first_name: "hunter",last_name: "chapman")
+c = Course.create(name: "bio")
+
+
+quiz = Quiz.create(name: "popquiz")
+question = Question.create(body: "wood chucks chuck")
+choice = Choice.create(body: "4", correct: true)

@@ -1,8 +1,8 @@
 class StudentQuizzes < ActiveRecord::Migration
   def change
   	create_table :student_quzzes, id: false do |t|
-  		t.integer :quiz_id
-  		t.integer :student_id
+  		t.belongs_to :quiz
+  		t.belongs_to :student
   	end
   end
 end

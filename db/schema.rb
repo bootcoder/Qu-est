@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141011190940) do
   create_table "choices", force: true do |t|
     t.text     "body"
     t.boolean  "correct"
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,20 +27,28 @@ ActiveRecord::Schema.define(version: 20141011190940) do
   create_table "courses", force: true do |t|
     t.text     "name"
     t.text     "description"
+    t.integer  "teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "questions", force: true do |t|
     t.text     "body"
+    t.integer  "quiz_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "quizzes", force: true do |t|
     t.text     "name"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "student_courses", id: false, force: true do |t|
+    t.integer "student_id"
+    t.integer "course_id"
   end
 
   create_table "student_quzzes", id: false, force: true do |t|
@@ -52,17 +61,12 @@ ActiveRecord::Schema.define(version: 20141011190940) do
     t.integer "choice_id"
   end
 
-  create_table "student_teacher_courses", id: false, force: true do |t|
-    t.integer "student_id"
-    t.integer "teacher_id"
-    t.integer "course_id"
-  end
-
   create_table "students", force: true do |t|
     t.text     "first_name"
     t.text     "last_name"
     t.text     "email"
     t.text     "phone"
+    t.text     "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,6 +76,7 @@ ActiveRecord::Schema.define(version: 20141011190940) do
     t.text     "last_name"
     t.text     "email"
     t.text     "phone"
+    t.text     "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

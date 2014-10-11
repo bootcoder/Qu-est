@@ -4,6 +4,8 @@ class CreateChoices < ActiveRecord::Migration
       t.text :body
       t.boolean :correct
 
+      t.belongs_to :question
+
       t.timestamps
     end
   end

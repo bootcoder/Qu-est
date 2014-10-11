@@ -3,6 +3,8 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.text :body
 
+      t.belongs_to :quiz
+
       t.timestamps
     end
   end
