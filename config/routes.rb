@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :choices
 
-  resources :quizzes do
-    resources :questions
-  end
+  resources :quizzes
+  
+  resources :questions
 
   resources :courses
 
