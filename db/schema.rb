@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20141011190940) do
     t.string   "email"
     t.string   "phone"
     t.string   "password"
+    t.boolean  "teacher_access"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

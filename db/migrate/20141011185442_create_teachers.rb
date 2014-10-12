@@ -6,6 +6,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.string :password
+      t.boolean :teacher_access
 
       t.timestamps
     end
