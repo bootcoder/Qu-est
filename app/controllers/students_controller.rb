@@ -16,6 +16,26 @@ class StudentsController < ApplicationController
     p @courses
   end
 
+  def classes_signup
+    student = logged_in?
+    @courses = Student.avaliable_courses(student)
+  end
+
+  def add_class
+    logged_in?
+    course = Course.find(params[:id])
+    @current_user.courses << course
+    @current_user.save
+    redirect_to :controller => 'courses', :action => 'index'
+  end
+
+  def drop_class
+    logged_in?
+    course = Course.find(params[:id])
+    @current_user.courses.destroy(course)
+    redirect_to :controller => 'courses', :action => 'index'
+  end
+
   # GET /students/new
   def new
     @student = Student.new

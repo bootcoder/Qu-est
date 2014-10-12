@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :courses
 
   resources :students
+  
+    post "add_class" => "students#add_class", as: "add_class"
+    post "drop_class" => "students#drop_class", as: "drop_class"
+    get "classes_signup" => "students#classes_signup", as: "classes_signup"
 
   resources :teachers
 
@@ -15,6 +19,8 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   post "sessions/create" => "sessions#create"
   post "responses/create" => "student_responses#create"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
