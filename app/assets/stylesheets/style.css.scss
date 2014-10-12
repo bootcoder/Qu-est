@@ -1,0 +1,86 @@
+/** {
+  border: 1px solid red;
+}*/
+
+body {
+  background-image: url("background.png");
+}
+
+.form-login {
+  text-align: center;
+  margin-top: 35px;
+}
+
+label {
+    display: block;
+    width: 100%;
+}
+
+input[type=text],
+input[type=password] {
+  padding: 15px;
+  margin: 5px;
+  background-color: #a4cac7;
+  color: #ffffff;
+}
+
+::-webkit-input-placeholder {
+   color: #ffffff;
+}
+
+.signup {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hidden {
+  margin-top: 25px;
+  text-align: center;
+}
+
+/*.sign_up {
+  display: inline;
+}*/
+
+.footer {
+  position: absolute;
+  margin-top: 215px;
+  text-align: center;
+  width: 100%;
+}
+
+.logo {
+  text-align: center;
+}
+
+.header {
+  background-color: #3e7e9f;
+  box-shadow: 0 10px 5px 5px #3e7e9f;
+}
+
+.btn {
+  color: #ffffff;
+  background-color: #7eb282;
+  padding: 5px 25px 5px 25px;
+}
+
+.in-line {
+  display: inline-block;
+}
+.center{
+  text-align:center;
+}
+
+form.button_to {
+  width: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+/*.button {
+  border-radius: 5px;
+}
+
+.button a {
+  text-decoration: none;
+}*/

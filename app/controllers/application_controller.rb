@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
     # @current_user ||= Teacher.find(session[:id]) if session[:type] == "teacher" || Student.find(session[:id]) if session[:type] == "student"
     if session[:type] == "teacher"
       @current_user ||= Teacher.find(session[:id])
+      @current_user
     elsif session[:type] == "student"
       @current_user ||= Student.find(session[:id])
+      @current_user
     else
       @current_user = nil
     end

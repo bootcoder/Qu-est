@@ -31,9 +31,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-
-    @course = Course.new(course_params)
-
+    @course = Course.new(course_params.merge(:teacher_id => session[:id]))
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
