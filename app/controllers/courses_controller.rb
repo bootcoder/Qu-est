@@ -4,8 +4,13 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    current_user
+    logged_in?
     @courses = @current_user.courses
+    if session[:type] == "teacher"
+      render partial: "teacher_index"
+    elsif session[:type] == "student"
+      render partial: "student_index"
+    end
   end
 
   # GET /courses/1

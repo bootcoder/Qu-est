@@ -18,9 +18,24 @@ class StudentsController < ApplicationController
 
   def classes_signup
     student = logged_in?
-    p "$"
-    
     @courses = Student.avaliable_courses(student)
+  end
+
+  def add_class
+    logged_in?
+    course = Course.find(params[:id])
+    @current_user.courses << course
+    @current_user.save
+    @courses = @current_user.courses
+    render 'courses/index'
+  end
+
+  def drop_class
+    logged_in?
+    course = Course.find(params[:id])
+    @current_user.courses.destroy(course)
+    @courses = @current_user.courses
+    render 'courses/index'
   end
 
   # GET /students/new
