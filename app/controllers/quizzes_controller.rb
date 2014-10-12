@@ -17,12 +17,10 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
 
   def new
-    p params
     if session[:id]  #&& Teacher.find(session[:id]).teacher_access == true
       session[:c_id] = params[:id]
       # @course = Course.find(params[:id])
       @quiz = Quiz.new
-      @target_teacher = Teacher.find(session[:id])
     else
       redirect_to log_in_path
     end

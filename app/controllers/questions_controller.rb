@@ -11,11 +11,11 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @choices = Question.find(params[:id]).choices
-    p @choices
   end
 
   # GET /questions/new
   def new
+    session[:quiz_id] = params[:id]
     @question = Question.new
   end
 
@@ -26,8 +26,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    current_quiz = Quiz.find(session[:quiz_id])
     @question = Question.new(question_params)
-
+    current_quiz.questions << @question
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }

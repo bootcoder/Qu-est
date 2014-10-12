@@ -13,4 +13,5 @@
 	<% @questions.each do |question|  %>
 		<h3><%= link_to "#{question.body}", question_path(question.id) %></h3>
 	<% end %>
+	<%= link_to("New Question", new_question_path(id: @quiz.id) ) %>
 </div>
