@@ -19,19 +19,20 @@
 				<% end %>
 				
 				<% if index == 0 %>
-					<input class="next_question" data-question-number="<%= index + 1 %>" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
+					<input class="next_question" data-question-id="<%= question.id %>" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
 				<% elsif index == @questions.length - 1 %>
-					<input class="previous_question" data-previous-question="<%= index %>" type="button" value="Review Answers"></input>
-					<input class="next_question" data-next-question="<%= index + 2 %>" type="button" value="Submit Quiz"></input>
+					<input class="previous_question" data-question-id="<%= question.id %>" data-previous-question="<%= index %>" type="button" value="Previous Question"></input>
+					<input id="submit_quiz" data-question-id="<%= question.id %>" type="button" value="Submit Quiz"></input>
 				<% else %>
-					<input type="button" class="previous_question" data-previous-question="<%= index %>" value="Previous Question"></input>
-					<input id="submit_quiz" type="button" value="Next Question"></input>
+					<input type="button" class="previous_question" data-question-id="<%= question.id %>" data-previous-question="<%= index %>" value="Previous Question"></input>
+					<input class="next_question" data-question-id="<%= question.id %>" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
 				<% end %>
 			</form>
 		</div>
 	<% end %>
 
 	<script type="text/javascript">
+		var selections = {}
 		function startQuiz() {
 			bindEvents()
 			showQuestionNumber(1)
@@ -45,21 +46,28 @@
 		function bindEvents(){
 			$('.next_question').on('click', function(e){
 				e.preventDefault();
-
 				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
 				showQuestionNumber($(this).data('next-question'))
 			})
 			$('.previous_question').on('click', function(e){
 				e.preventDefault();
+				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
 				showQuestionNumber($(this).data('previous-question'))
+			})
+			$('#submit_quiz').on('click', function(e){
+				e.preventDefault();
+				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
+				submitAnswers(selections)
 			})
 		}
 		function generateResponse(choiceID, questionID){
+			selections[ questionID ] = choiceID;
+		}
+		function submitAnswers(answers){
 			$.ajax({
 				type: 'POST',
 				url: '/responses/create',
-				data: {choice: choiceID,
-							 question: questionID,
+				data: {responses: answers,
 							 student: <%= session[:id] %>	}
 			}).success(function(response){
 				console.log('completed')
@@ -67,5 +75,6 @@
 				console.log('Something went wrong')
 			})
 		}
+			
 		startQuiz()
 	</script>
