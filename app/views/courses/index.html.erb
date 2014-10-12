@@ -2,14 +2,14 @@
 
 <% if session[:type] == "teacher" %>
 <% @courses.each do |course| %>
-  <%= course.name%>
+  <%= course.name%><br>
     <% course.quizzes.each do |quiz| %>
     <ul>
     <li><%= link_to quiz.name, edit_quiz_path(quiz) %></li><br>
     </ul>
     <% end %>
   <% end %>
-
+<%= button_to "Add New Course", new_course_path, :method => :get %>
 <% end %>
 <br>
 
