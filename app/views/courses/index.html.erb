@@ -1,36 +1,27 @@
 <h1>Listing courses</h1>
 
-    <%= if session[:type] == "teacher" %>
-    <% @courses.each do |course| %>
-      <%= course.name%>
-        <% course.quizzes.each do |quiz| %>
-        <ul>
+<% if session[:type] == "teacher" %>
+<% @courses.each do |course| %>
+  <%= course.name%>
+    <% course.quizzes.each do |quiz| %>
+    <ul>
     <li><%= link_to quiz.name, edit_quiz_path(quiz) %></li><br>
-      </ul>
-       <% end %>
-        
-        <!-- <td><%= course.description %></td> -->
-        <!-- <td><= link_to 'Edit', edit_course_path(course) %></td>
-        <td><= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      
+    </ul>
     <% end %>
+  <% end %>
 
+<% end %>
 <br>
 
 <% if session[:type] =="student" %>
 <% @courses.each do |course| %>
-      <%= course.name %>
-        <% course.quizzes.each do |quiz| %>
-        <ul>
+  <%= course.name %>
+    <% course.quizzes.each do |quiz| %>
+    <ul>
     <li><%= link_to quiz.name, quiz_path(quiz) %></li><br>
-      </ul>
-       <% end %>
-        
-        <!-- <td><%= course.description %></td> -->
-        <!-- <td><= link_to 'Edit', edit_course_path(course) %></td>
-        <td><= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      
+    </ul>
     <% end %>
   <% end %>
+<% end %>
 <br>
 
