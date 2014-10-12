@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141012013533) do
     t.integer "course_id"
   end
 
-  create_table "student_quzzes", id: false, force: true do |t|
+  create_table "student_quizzes", id: false, force: true do |t|
     t.integer "quiz_id"
     t.integer "student_id"
   end
@@ -66,10 +66,6 @@ ActiveRecord::Schema.define(version: 20141012013533) do
     t.string   "last_name"
     t.string   "email"
     t.string   "phone"
-<<<<<<< HEAD
-=======
-    t.string   "password"
->>>>>>> a3e65f1682a6228761bdccf54d3b0ca1a388e6f7
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_salt"
