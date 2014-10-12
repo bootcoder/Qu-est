@@ -21,7 +21,11 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/new
   def new
-    @quiz = Quiz.new
+    if session[:id]  #&& Teacher.find(session[:id]).teacher_access == true
+      @quiz = Quiz.new
+    else
+      redirect_to log_in_path
+    end
   end
 
   # GET /quizzes/1/edit
@@ -31,7 +35,9 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
+    current_course = Course.find(session[:course_id])
     @quiz = Quiz.new(quiz_params)
+    current_course.quizzes << @quiz
 
     respond_to do |format|
       if @quiz.save
