@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   private
+
   def logged_in?
     # @current_user ||= Teacher.find(session[:id]) if session[:type] == "teacher" || Student.find(session[:id]) if session[:type] == "student"
     if session[:type] == "teacher"
@@ -13,4 +14,5 @@ class ApplicationController < ActionController::Base
       @current_user = nil
     end
   end
+
 end
