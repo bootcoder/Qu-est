@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
   def create
     student = Student.authenticate(params[:email], params[:password])
     teacher = Teacher.authenticate(params[:email], params[:password])
-    if student && student.password == params[:password]
+    if student
       session[:id] = student.id
       session[:type] = "student"
       flash[:notice] = "Login as a student was sucessful"
-    elsif teacher && teacher.password == params[:password]
+    elsif teacher
       session[:id] = teacher.id
       session[:type] = "teacher"
       flash[:notice] = "Login as a teacher was sucessful"

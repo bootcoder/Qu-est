@@ -25,14 +25,13 @@ class TeachersController < ApplicationController
   # POST /teachers
   # POST /teachers.json
   def create
-    p "*"*50
-    p params
-    p teacher_params
     @teacher = Teacher.new(teacher_params)
 
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+        session[:id] = @teacher.id
+        session[:type] = "teacher"
+        format.html { redirect_to courses_path, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
         format.html { render :new }
