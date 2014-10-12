@@ -31,6 +31,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1/edit
   def edit
+    
   end
 
 
