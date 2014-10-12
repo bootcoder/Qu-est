@@ -17,7 +17,10 @@ class StudentsController < ApplicationController
   end
 
   def classes_signup
-    Student.avaliable_courses
+    student = logged_in?
+    p "$"
+    
+    @courses = Student.avaliable_courses(student)
   end
 
   # GET /students/new

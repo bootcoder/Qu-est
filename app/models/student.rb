@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
 	
+
 	has_many :student_courses
 	has_many :courses, through: :student_courses
 
@@ -34,16 +35,14 @@ class Student < ActiveRecord::Base
     end
   end
 
-  def self.avaliable_courses
+  def self.avaliable_courses(student)
+    all_classes = Course.all
+    student_courses = Student.find(student.id).courses
+
     p "%" * 100
-    logged_in?
-    # p session
-    p @current_user
-    @courses = Course.all
-    # student_courses = Student.find(1).courses
-    # p @courses
-    # p "*" * 100
-    # p student_courses
+    ap all_classes
+    ap student_courses
+    p "%" * 100
   end
 
 
