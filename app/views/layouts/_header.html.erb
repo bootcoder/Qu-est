@@ -8,7 +8,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= session[:type] %>
       <%= link_to "Qu-est", root_path, class: "navbar-brand" %>
     </div>
 
@@ -16,12 +15,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
     <% if session[:type] == "teacher" %>
-        <li class="nav-li"><a href="#">Link</a></li>
-        <li class="nav-li"><a href="#">Link</a></li>
+        <li class="nav-li"><a href="/courses">Courses</a></li>
+        <li class="nav-li"><a href="/students">Students</a></li>
         <li class="nav-li"><%= link_to "Logout", log_out_path, method: :post %></li>
       <% elsif session[:type] == "student" %>
-        <li class="nav-li"><a href="#">Link</a></li>
-        <li class="nav-li"><a href="#">Link</a></li>
+        <li class="nav-li"><a href="/courses">Courses</a></li>
         <li class="nav-li"><%= link_to "Logout", log_out_path, method: :post %></li>
       <% else %>
       <% end %>

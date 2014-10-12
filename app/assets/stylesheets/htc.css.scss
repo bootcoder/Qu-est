@@ -1,7 +1,7 @@
-/** {
-	border: 1px solid red;
-}
-*/
+// * {
+// 	border: 1px solid red;
+// }
+
 /* ================================
 Imports
 ================================= */
@@ -151,7 +151,11 @@ Home sections
 }
 
 .bg-dark {
-	background: #575757;
+	background-color: #575757;
+}
+
+.bg-green {
+	background-image: url(bg-green.png)
 }
 
 .bg-site {

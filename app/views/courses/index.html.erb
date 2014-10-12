@@ -1,5 +1,5 @@
 <% if session[:type] == "student" %>
-  <h1>Listing Courses</h1>
+  <h1 class="bg-dark">Listing Courses</h1>
   <table>
     <thead>
       <tr>
@@ -19,7 +19,7 @@
   <%= button_to "Register for new class.", classes_signup_path, method: "get" %> 
 <% end %>
 <% if session[:type] == "teacher" %>
-  <h1>Listing Courses</h1>
+  <h1 class="">Listing Courses</h1>
 
   <table>
     <thead>
