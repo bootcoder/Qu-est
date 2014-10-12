@@ -19,4 +19,6 @@
 	<% @quizzes.each do |quiz|  %>
 		<h3><%= link_to "#{quiz.name}", quiz_path(quiz.id) %></h3>
 	<% end %>
+	<%= link_to "New Quiz", new_quiz_path(id: @course.id) %>
 </div>
+

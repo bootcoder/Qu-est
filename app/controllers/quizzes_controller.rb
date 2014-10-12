@@ -17,9 +17,12 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
 
   def new
+    p params
     if session[:id]  #&& Teacher.find(session[:id]).teacher_access == true
-      @quiz=Quiz.new
-      @target_teacher= Teacher.find(session[:id])
+      session[:c_id] = params[:id]
+      # @course = Course.find(params[:id])
+      @quiz = Quiz.new
+      @target_teacher = Teacher.find(session[:id])
     else
       redirect_to log_in_path
     end
@@ -34,7 +37,10 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
+    current_course = Course.find(session[:c_id])
     @quiz = Quiz.new(quiz_params)
+    current_course.quizzes << @quiz
+
     respond_to do |format|
       if @quiz.save
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
