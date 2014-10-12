@@ -15,7 +15,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    session[:quiz_id] = params[:id]
     @question = Question.new
   end
 

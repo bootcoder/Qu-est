@@ -11,7 +11,7 @@
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', root_path %>
 
 
 <div>
@@ -19,6 +19,9 @@
 	<% @quizzes.each do |quiz|  %>
 		<h3><%= link_to "#{quiz.name}", quiz_path(quiz.id) %></h3>
 	<% end %>
+	
+	<% session[:course_id] = @course.id %>
+
 	<%= link_to "New Quiz", new_quiz_path(id: @course.id) %>
 </div>
 

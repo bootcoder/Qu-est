@@ -18,8 +18,6 @@ class QuizzesController < ApplicationController
 
   def new
     if session[:id]  #&& Teacher.find(session[:id]).teacher_access == true
-      session[:c_id] = params[:id]
-      # @course = Course.find(params[:id])
       @quiz = Quiz.new
     else
       redirect_to log_in_path
@@ -35,7 +33,7 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
-    current_course = Course.find(session[:c_id])
+    current_course = Course.find(session[:course_id])
     @quiz = Quiz.new(quiz_params)
     current_course.quizzes << @quiz
 

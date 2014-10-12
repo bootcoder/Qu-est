@@ -14,7 +14,6 @@ class ChoicesController < ApplicationController
 
   # GET /choices/new
   def new
-    session[:question_id] = params[:id]
     @question = Question.find(params[:id])
     @choice = Choice.new
   end
