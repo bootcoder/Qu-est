@@ -4,12 +4,14 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    current_user
+    @courses = @current_user.courses
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @quizzes = Course.find(params[:id]).quizzes
   end
 
   # GET /courses/new
@@ -24,6 +26,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
+
     @course = Course.new(course_params)
 
     respond_to do |format|

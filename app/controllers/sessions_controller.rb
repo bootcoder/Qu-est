@@ -4,14 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    student = Student.find_by_email(params[:email])
-    teacher = Teacher.find_by_email(params[:email])
-    if student && student.password == params[:password]
-      session[:id] = user.id
+    student = Student.authenticate(params[:email], params[:password])
+    teacher = Teacher.authenticate(params[:email], params[:password])
+    if student
+      session[:id] = student.id
       session[:type] = "student"
       flash[:notice] = "Login as a student was sucessful"
-    elsif teacher && teacher.password == params[:password]
-      session[:id] = user.id
+    elsif teacher
+      session[:id] = teacher.id
       session[:type] = "teacher"
       flash[:notice] = "Login as a teacher was sucessful"
     else

@@ -10,6 +10,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    @courses = Teacher.find(params[:id]).courses
   end
 
   # GET /teachers/new
@@ -28,7 +29,9 @@ class TeachersController < ApplicationController
 
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+        session[:id] = @teacher.id
+        session[:type] = "teacher"
+        format.html { redirect_to courses_path, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:first_name, :last_name, :email, :phone)
+      params.require(:teacher).permit(:first_name, :last_name, :email, :phone, :password, :password_confirmation)
     end
 end

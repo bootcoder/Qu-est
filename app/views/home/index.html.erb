@@ -1,0 +1,5 @@
+<% if @current_user %>
+  here is where you render the dahsboard partial
+<% else %>
+  <%= render partial: "/sessions/new" %>
+<% end %>
