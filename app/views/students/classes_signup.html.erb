@@ -1,0 +1,8 @@
+<div>
+	<h2>Sign up for a new class</h2>
+	<ul class="courses"> Available Course's
+		<% @courses.each do |course| %>
+			<li><%= course.name %></li>
+		<% end %>
+	</ul>
+</div>
