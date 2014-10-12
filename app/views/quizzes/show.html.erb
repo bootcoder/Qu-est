@@ -5,12 +5,52 @@
   <%= @quiz.name %>
 </p>
 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
-
-<div>
-	<h2>Current Questions</h2>
-	<% @questions.each do |question|  %>
-		<h3><%= link_to "#{question.body}", question_path(question.id) %></h3>
-	<% end %>
+<div id="quiz">
 </div>
+
+
+	<% @questions.each_with_index do |question, index|  %>
+		<div class="question_template" id="question<%=index + 1%>">
+			<h2>Question <%= index + 1 %></h2>
+			<h3><%= question.body %></h3>
+			<form class="answers">
+				<% question.choices.each do |choice|%>
+					<input type="radio" name="choice" value=<%= choice.id %> ><%= choice.body %></input>
+				<% end %>
+				
+				<% if index == 0 %>
+					<input class="next_question" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
+				<% elsif index == @questions.length - 1 %>
+					<input class="previous_question" data-previous-question="<%= index %>" type="button" value="Review Answers"></input>
+					<input class="next_question" data-next-question="<%= index + 2 %>" type="button" value="Submit Quiz"></input>
+				<% else %>
+					<input type="button" class="previous_question" data-previous-question="<%= index %>" value="Previous Question"></input>
+					<input id="submit_quiz" type="button" value="Next Question"></input>
+				<% end %>
+			</form>
+		</div>
+	<% end %>
+
+	<script type="text/javascript">
+		function startQuiz() {
+			bindEvents()
+			showQuestionNumber(1)
+		}
+		function showQuestionNumber(number){
+			$('#quiz').empty();
+			var question = $('#question'+ number)
+			$('#quiz').append(question)
+			question.show()
+		}
+		function bindEvents(){
+			$('.next_question').on('click', function(e){
+				e.preventDefault();
+				showQuestionNumber($(this).data('next-question'))
+			})
+			$('.previous_question').on('click', function(e){
+				e.preventDefault();
+				showQuestionNumber($(this).data('previous-question'))
+			})
+		}
+		startQuiz()
+	</script>

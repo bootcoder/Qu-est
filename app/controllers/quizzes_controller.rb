@@ -10,8 +10,13 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
-    @questions = Quiz.find(params[:id]).questions
-    p @questions
+    redirect_to "/quizzes/#{params[:id]}/edit" if session[:type] == "teacher"
+    quiz = Quiz.find(params[:id])
+    if quiz.course.students.pluck('id').include?(session[:id]) && quiz.published?
+      @questions = quiz.questions
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /quizzes/new
