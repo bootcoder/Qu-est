@@ -5,14 +5,78 @@
   <%= @quiz.name %>
 </p>
 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', course_path(session[:course_id]) %>
+<div id="quiz">
+</div>
 
-<div>
-	<h2>Current Questions</h2>
-	<% @questions.each do |question|  %>
-		<h3><%= link_to "#{question.body}", question_path(question.id) %></h3>
+
+	<% @questions.each_with_index do |question, index|  %>
+		<div class="question_template" id="question<%=index + 1%>">
+			<h2>Question <%= index + 1 %></h2>
+			<h3><%= question.body %></h3>
+			<form class="answers">
+				<% question.choices.each do |choice|%>
+					<input type="radio" name="choice" value=<%= choice.id %> ><%= choice.body %></input>
+				<% end %>
+				
+				<% if index == 0 %>
+					<input class="next_question" data-question-id="<%= question.id %>" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
+				<% elsif index == @questions.length - 1 %>
+					<input class="previous_question" data-question-id="<%= question.id %>" data-previous-question="<%= index %>" type="button" value="Previous Question"></input>
+					<input id="submit_quiz" data-question-id="<%= question.id %>" type="button" value="Submit Quiz"></input>
+				<% else %>
+					<input type="button" class="previous_question" data-question-id="<%= question.id %>" data-previous-question="<%= index %>" value="Previous Question"></input>
+					<input class="next_question" data-question-id="<%= question.id %>" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
+				<% end %>
+			</form>
+		</div>
 	<% end %>
-	<% session[:quiz_id] = @quiz.id %>
-	<%= link_to("New Question", new_question_path(id: @quiz.id) ) %>
+
+	<script type="text/javascript">
+		var selections = {}
+		function startQuiz() {
+			bindEvents()
+			showQuestionNumber(1)
+		}
+		function showQuestionNumber(number){
+			$('#quiz').empty();
+			var question = $('#question'+ number)
+			$('#quiz').append(question)
+			question.show()
+		}
+		function bindEvents(){
+			$('.next_question').on('click', function(e){
+				e.preventDefault();
+				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
+				showQuestionNumber($(this).data('next-question'))
+			})
+			$('.previous_question').on('click', function(e){
+				e.preventDefault();
+				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
+				showQuestionNumber($(this).data('previous-question'))
+			})
+			$('#submit_quiz').on('click', function(e){
+				e.preventDefault();
+				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
+				submitAnswers(selections)
+			})
+		}
+		function generateResponse(choiceID, questionID){
+			selections[ questionID ] = choiceID;
+		}
+		function submitAnswers(answers){
+			$.ajax({
+				type: 'POST',
+				url: '/responses/create',
+				data: {responses: answers,
+							 student: <%= session[:id] %>	}
+			}).success(function(response){
+				console.log('completed')
+			}).error(function(response){
+				console.log('Something went wrong')
+			})
+		}
+			
+		startQuiz()
+	</script>
+	
 </div>

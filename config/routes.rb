@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   post "sessions/create" => "sessions#create"
+  post "responses/create" => "student_responses#create"
 
 
 
