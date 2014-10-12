@@ -17,7 +17,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
 
   def new
-    if session[:id] && Teacher.find(session[:id]).teacher_access == true
+    if session[:id]  #&& Teacher.find(session[:id]).teacher_access == true
       @quiz=Quiz.new
       @target_teacher= Teacher.find(session[:id])
     else
