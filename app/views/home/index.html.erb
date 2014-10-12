@@ -1,6 +1,7 @@
 <% if @current_user %>
-<%= @current_user %>
-  here is where you render the dahsboard partial
+
+  <%= render partial: "/courses/list" %>
+
 <% else %>
   <%= render partial: "/sessions/new" %>
 <% end %>

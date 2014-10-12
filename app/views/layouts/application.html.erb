@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title>QuEst</title>
+	  <title>Qu-Est</title>
 	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -12,11 +12,11 @@
 	<body>
 
 		<%= render partial: "layouts/header" %>
-
-		<div class='container'>
-
+		<%= button_to "Logout", log_out_path %>
+		<div class="container">
+			<div class="eight columns offset-by-four">
 			<%= yield %>
-
+			</div>
     </div>
 
     <%= render partial: "layouts/footer"  %>
