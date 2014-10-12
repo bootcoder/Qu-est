@@ -33,4 +33,18 @@ class Student < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+  def self.avaliable_courses
+    p "%" * 100
+    logged_in?
+    # p session
+    p @current_user
+    @courses = Course.all
+    # student_courses = Student.find(1).courses
+    # p @courses
+    # p "*" * 100
+    # p student_courses
+  end
+
+
 end

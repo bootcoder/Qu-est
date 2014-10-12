@@ -17,13 +17,7 @@ class StudentsController < ApplicationController
   end
 
   def classes_signup
-    # p session
-    p @current_user
-    @courses = Course.all
-    student_courses = Student.find(@current_user.id).courses
-    p @courses
-    p "*" * 100
-    p student_courses
+    Student.avaliable_courses
   end
 
   # GET /students/new
