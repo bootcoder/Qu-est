@@ -14,6 +14,8 @@ class ChoicesController < ApplicationController
 
   # GET /choices/new
   def new
+    session[:choice_id] = params[:id]
+    @question = Question.find(params[:id])
     @choice = Choice.new
   end
 
@@ -24,12 +26,12 @@ class ChoicesController < ApplicationController
   # POST /choices
   # POST /choices.json
   def create
+    current_question = Question.find(session[:choice_id])
     @choice = Choice.new(choice_params)
-
+    current_question.choices << @choice
     respond_to do |format|
       if @choice.save
-        format.html { redirect_to @choice, notice: 'Choice was successfully created.' }
-        format.json { render :show, status: :created, location: @choice }
+        format.html { redirect_to question_path }
       else
         format.html { render :new }
         format.json { render json: @choice.errors, status: :unprocessable_entity }
