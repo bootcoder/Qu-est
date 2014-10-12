@@ -113,9 +113,63 @@ form.button_to {
   text-align: center;
 }
 
-.nav-li a {
-
+.course {
+  background-color: #73aea9;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  border-radius: 10px;
 }
+
+.course a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.course-btn {
+  margin-top: 15px;
+}
+
+.edit-btn {
+  background-color: #a4cac7;
+  padding: 10px 47px 10px 47px;
+  margin-top: 10px;
+}
+
+a.edit-btn {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.delete-btn {
+  background-color: #a4cac7;
+  padding: 10px 47px 10px 47px;
+  text-decoration: none;
+}
+
+a.delete-btn {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.new-course {
+  background-color: #7eb282;
+  padding: 10px 0 10px 0;
+  border-radius: 10px;
+}
+
+.new-course a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 /*.button {
   border-radius: 5px;
 }

@@ -1,17 +1,18 @@
 <% @courses.each do |course| %>
-  <div ="">
-    <%= link_to course.name, course_path(course) %><br>    
+  <div class = "course">
+    <%= link_to course.name, course_path(course) %><br>
   </div>
-  <div ="">
+  <div class="course-btn">
   <% if session[:type] == "teacher" %>
-    <%= link_to 'Edit', edit_course_path(course) %>
-    <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "" %>    
+    <%= link_to 'Edit', edit_course_path(course), class: "edit-btn" %>
+    <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-btn" %>
   <% end %>
   </div>
   <br>
 <% end %>
-    
 
-<% if session[:type] == "teacher" %>
-  <%= link_to 'New Course', new_course_path %>
-<% end %>
+<div class="new-course">
+  <% if session[:type] == "teacher" %>
+    <%= link_to 'New Course', new_course_path %>
+  <% end %>
+</div>

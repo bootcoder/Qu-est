@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20141012122552) do
     t.integer "student_id"
   end
 
-  create_table "student_responses", force: true do |t|
+  create_table "student_responses", id: false, force: true do |t|
     t.integer "student_id"
     t.integer "choice_id"
     t.integer "question_id"
