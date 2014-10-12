@@ -46,8 +46,8 @@ course1 = Course.create(name:"History", description: "the history of the world."
 course2 = Course.create(name:"English", description: "taught in the language English.", teacher_id: teacher1.id)
 course3 = Course.create(name:"Art", description: "taught in the language of art", teacher_id: teacher2.id)
 course4 = Course.create(name:"Science", description: "taught in the language Science??", teacher_id: teacher2.id)
-
-quiz1 = Quiz.create(course_id: course1.id, name: "History Prerequisites")
+student1.courses << course1
+quiz1 = Quiz.create(course_id: course1.id, name: "History Prerequisites", published?: true)
 quiz2 = Quiz.create(course_id:course1.id, name: "Slightly More Advanced History")
 quiz3 = Quiz.create(course_id:course2.id, name: "No way")
 quiz4 = Quiz.create(course_id:course3.id, name: "YOLO")
