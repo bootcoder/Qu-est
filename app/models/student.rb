@@ -37,13 +37,13 @@ class Student < ActiveRecord::Base
 
   def self.avaliable_courses(student)
     all_classes = Course.all
-    student_courses = Student.find(student.id).courses
-
-    p "%" * 100
-    ap all_classes
-    ap student_courses
-    p "%" * 100
+    student_classes = Student.find(student.id).courses
+    avaliable_courses = all_classes - student_classes
   end
+
+
+
+  
 
 
 end
