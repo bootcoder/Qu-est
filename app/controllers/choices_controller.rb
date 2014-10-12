@@ -31,7 +31,7 @@ class ChoicesController < ApplicationController
     current_question.choices << @choice
     respond_to do |format|
       if @choice.save
-        format.html { redirect_to question_path(session[]) }
+        format.html { redirect_to question_path(session[:question_id]) }
       else
         format.html { render :new }
         format.json { render json: @choice.errors, status: :unprocessable_entity }
