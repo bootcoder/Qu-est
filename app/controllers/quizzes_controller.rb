@@ -10,12 +10,15 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
-    redirect_to "/quizzes/#{params[:id]}/edit" if session[:type] == "teacher"
-    quiz = Quiz.find(params[:id])
-    if quiz.course.students.pluck('id').include?(session[:id]) && quiz.published?
-      @questions = quiz.questions
-    else
-      redirect_to root_path
+    if session[:type] == "teacher"
+      redirect_to "/quizzes/#{params[:id]}/edit" 
+    elsif session[:type] == "student"
+      quiz = Quiz.find(params[:id])
+      if quiz.course.students.pluck('id').include?(session[:id]) && quiz.published?
+        @questions = quiz.questions
+      else
+        redirect_to root_path
+      end
     end
   end
 
@@ -31,7 +34,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1/edit
   def edit
-    
+    @quiz_var = Quiz.find(params[:id])
   end
 
 
