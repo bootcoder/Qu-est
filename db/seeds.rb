@@ -35,6 +35,14 @@ student3 = {
   password: "YOLO"
 }
 
+student4 = {
+  first_name: "tom",
+  last_name: "tomtom",
+  email: "tom@tom.com",
+  phone: 1111111111,
+  password: "tomtom"
+}
+
 teacher1 = Teacher.create(teacher1)
 teacher2 = Teacher.create(teacher2)
 

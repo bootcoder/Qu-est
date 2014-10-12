@@ -1,0 +1,122 @@
+/** {
+  border: 1px solid red;
+}*/
+
+body {
+  background-image: url("background.png");
+}
+
+.container {
+  margin-top: 35px;
+}
+
+.form-login {
+  text-align: center;
+}
+
+label {
+    display: block;
+    width: 100%;
+}
+
+input[type=text],
+input[type=password] {
+  text-indent: 1em;
+  padding: 1em 0em;
+  margin: 1em;
+  background-color: #ffffff;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+  border: 2px solid #7eb282;
+}
+
+::-webkit-input-placeholder {
+   color: #696969;
+}
+
+#create_acc_link {
+  display: block;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.hidden {
+  margin-top: 25px;
+  text-align: center;
+}
+
+/*.sign_up {
+  display: inline;
+}*/
+
+.footer {
+  position: absolute;
+  margin-top: 215px;
+  text-align: center;
+  width: 100%;
+}
+
+.logo {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #3e7e9f;
+  box-shadow: 0px 10px 20px #91acab;
+}
+
+.btn {
+  color: #ffffff;
+  background-color: #7eb282;
+  padding: 1em 2em;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+  border: 0px;
+}
+.center_buttons {
+  text-align: center;
+  margin: 0 auto;
+  width: 98%;
+}
+.button_to div {
+display: inline;
+}
+.sidebtn {
+  color: #ffffff;
+  background-color: #7eb282;
+  padding: 1em 0em;
+  width: 40%;
+  max-width: 200px;
+  border-radius: 5px;
+  border: 0px;
+}
+a {
+  color: #1f516b;
+}
+a:hover {
+  color: #3e7e9f;
+}
+
+.in-line {
+  display: inline-block;
+}
+.center{
+  text-align:center;
+}
+
+form.button_to {
+  width: auto;
+  display: inline;
+  text-align: center;
+}
+
+/*.button {
+  border-radius: 5px;
+}
+
+.button a {
+  text-decoration: none;
+}*/

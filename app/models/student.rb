@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
 	
+
 	has_many :student_courses
 	has_many :courses, through: :student_courses
 
@@ -33,4 +34,16 @@ class Student < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+  def self.avaliable_courses(student)
+    all_classes = Course.all
+    student_classes = Student.find(student.id).courses
+    avaliable_courses = all_classes - student_classes
+  end
+
+
+
+  
+
+
 end
