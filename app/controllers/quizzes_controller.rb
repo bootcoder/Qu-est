@@ -15,29 +15,52 @@ class QuizzesController < ApplicationController
   end
 
   # GET /quizzes/new
+
   def new
-    @quiz = Quiz.new
+    if session[:id]  #&& Teacher.find(session[:id]).teacher_access == true
+      @quiz=Quiz.new
+      @target_teacher= Teacher.find(session[:id])
+    else
+      redirect_to log_in_path
+    end
   end
 
   # GET /quizzes/1/edit
   def edit
   end
 
+
+
   # POST /quizzes
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
-
     respond_to do |format|
       if @quiz.save
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render :show, status: :created, location: @quiz }
+
+# @target_teacher.courses.quizzez << @quiz
+
+
       else
         format.html { render :new }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
+  # def create  
+  #   @quiz_params = {name: params[:name]}
+  #   @new_quiz = Quiz.create(@quiz_params)
+  #   @something = {quiz_id: @new_quizid.id, teacher_id: session[:id]}
+  # end
+
+
+
+
+
 
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
