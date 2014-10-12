@@ -1,5 +1,7 @@
 <% if @current_user %>
+
   <%= render partial: "/courses/list" %>
+
 <% else %>
   <%= render partial: "/sessions/new" %>
 <% end %>

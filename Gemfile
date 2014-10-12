@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'unicorn'
 gem 'font-awesome-rails'
+gem 'awesome_print'
 # gem 'owlcarousel-rails'
 # gem 'magnific-popup-rails'
 # gem 'newrelic_rpm'
