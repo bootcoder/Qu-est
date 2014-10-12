@@ -19,7 +19,7 @@
 				<% end %>
 				
 				<% if index == 0 %>
-					<input class="next_question" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
+					<input class="next_question" data-question-number="<%= index + 1 %>" data-next-question="<%= index + 2 %>" type="button" value="Next Question"></input>
 				<% elsif index == @questions.length - 1 %>
 					<input class="previous_question" data-previous-question="<%= index %>" type="button" value="Review Answers"></input>
 					<input class="next_question" data-next-question="<%= index + 2 %>" type="button" value="Submit Quiz"></input>
@@ -45,11 +45,26 @@
 		function bindEvents(){
 			$('.next_question').on('click', function(e){
 				e.preventDefault();
+
+				generateResponse($(e.target).closest('form').serializeArray()[0].value, $(this).data('question-id'))
 				showQuestionNumber($(this).data('next-question'))
 			})
 			$('.previous_question').on('click', function(e){
 				e.preventDefault();
 				showQuestionNumber($(this).data('previous-question'))
+			})
+		}
+		function generateResponse(choiceID, questionID){
+			$.ajax({
+				type: 'POST',
+				url: '/responses/create',
+				data: {choice: choiceID,
+							 question: questionID,
+							 student: <%= session[:id] %>	}
+			}).success(function(response){
+				console.log('completed')
+			}).error(function(response){
+				console.log('Something went wrong')
 			})
 		}
 		startQuiz()
