@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   private
   def current_user
-    @current_user ||= Teacher.find(session[:id]) if session[:type] == "teacher" || Student.find(session[:id]) if session[:type] == "student"
+    @current_user = Teacher.find(session[:id]) if session[:type] == "teacher"
+    @current_user = Student.find(session[:id]) if session[:type] == "student"
   end
 end
