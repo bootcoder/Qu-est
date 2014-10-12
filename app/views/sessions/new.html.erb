@@ -1,14 +1,15 @@
 <%= form_tag("/sessions/create", method: "post", class: 'form-login', role: 'form') do %>
-  <h2 class="form-login-heading">sign in</h2>
-  <input type="text" name="email" placeholder="email here" class="form-control">
-  <input type="password" name="password" placeholder="password" class="form-control">
-  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+  <label for="email"></label><input type="text" name="email" placeholder="email" id="email" class="form-control">
+  <label for="password"></label><input type="password" name="password" placeholder="password" id="password" class="form-control">
+  <label>&nbsp; </label><input class="btn btn-lg btn-primary btn-block login" type="submit" value="Login">
 <% end %>
-<a href='#' class="js-partial" id="create_acc_link">
-  Need an account?
-</a>
-<div class="hidden" style='display: none;'>
-  <%= button_to 'Teacher', new_teacher_path, class: 'sign_up', method: :get %>
-  <%= button_to 'Student', new_student_path, class: 'sign_up', method: :get %>
+
+<div class="signup">
+  <a href='#' class="js-partial" id="create_acc_link">Need an Account?</a>
+</div>
+
+<div class="hidden center" style='display: none;'>
+  <%= button_to 'Teacher', new_teacher_path, class: 'sign_up btn in-line', method: :get %>
+  <%= button_to 'Student', new_student_path, class: 'sign_up btn in-line', method: :get %>
 </div>
 
