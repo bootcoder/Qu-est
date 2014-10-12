@@ -10,6 +10,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    @courses = Teacher.find(params[:id]).courses
   end
 
   # GET /teachers/new
@@ -24,6 +25,9 @@ class TeachersController < ApplicationController
   # POST /teachers
   # POST /teachers.json
   def create
+    p "*"*50
+    p params
+    p teacher_params
     @teacher = Teacher.new(teacher_params)
 
     respond_to do |format|
@@ -69,6 +73,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:first_name, :last_name, :email, :phone)
+      params.require(:teacher).permit(:first_name, :last_name, :email, :phone, :password, :password_confirmation)
     end
 end

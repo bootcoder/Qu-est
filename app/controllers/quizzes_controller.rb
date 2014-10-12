@@ -10,6 +10,8 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
+    @questions = Quiz.find(params[:id]).questions
+    p @questions
   end
 
   # GET /quizzes/new
@@ -18,10 +20,9 @@ class QuizzesController < ApplicationController
     if session[:id] && Teacher.find(session[:id]).teacher_access == true
       @quiz=Quiz.new
       @target_teacher= Teacher.find(session[:id])
+    else
+      redirect_to log_in_path
     end
-
-      #go back to sign-up/login page ##################################
-
   end
 
   # GET /quizzes/1/edit
