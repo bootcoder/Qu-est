@@ -38,7 +38,7 @@
 							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
 					  </li>
 					  <li class="item">
-						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout '.html_safe, log_out_path) %>
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout '.html_safe, log_out_path, method: :post) %>
 					  </li>
 					<% else %>
 						<li class="item">
@@ -48,7 +48,7 @@
 							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
 					  </li>
 					  <li class="item">
-						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout'.html_safe, log_out_path) %>
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout'.html_safe, log_out_path, method: :post) %>
 					  </li>
 					<% end %>
 				</div>
