@@ -20,21 +20,46 @@
       </section>
 
       <section class="middle tab-bar-section">
-        <h1 class="title">Qu-est</h1>
+        <h1 class="title"><%= link_to("Qu-est", root_path) %></h1>
       </section>
     </nav>
 
     <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
-        <% if session[:type] == "teacher" %>
-          <li class=""><a href="/courses">Courses</a></li>
-          <li class=""><a href="/students">Students</a></li>
-          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
-        <% elsif session[:type] == "student" %>
-          <li class=""><a href="/courses">Courses</a></li>
-          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
-        <% else %>
-        <% end %>
+        <div class="icon-bar large-vertical four-up">
+				  <% if session[:type] == "teacher" %>
+					  <a class="item" href="/courses">
+						  <i class="fa fa-university fa-stack-2x"></i><br><br>
+					    <label>Courses</label>
+					  </a>
+					  <a class="item" href="/students">
+						  <i class="fa fa-users fa-stack-2x"></i><br><br>
+					    <label>Students</label>
+					  </a>
+					  <a class="item" href="/students">
+						  <i class="fa fa-pencil fa-stack-2x"></i><br><br>
+					    <label>Quizzes</label>
+					  </a>
+					  <a class="item" href="/">
+						  <i class="fa fa-sign-out fa-stack-2x"></i><br><br>
+					    <label>Logout</label>
+					  </a>
+					<% else %>
+						<a class="item" href="/courses">
+						  <i class="fa fa-university fa-stack-2x"></i><br><br>
+					    <label>Courses</label>
+					  </a>
+					  <a class="item" href="/students">
+						  <i class="fa fa-pencil fa-stack-2x"></i><br><br>
+					    <label>Quizzes</label>
+					  </a>
+					  </a>
+					  <a class="item" href="/">
+						  <i class="fa fa-sign-out fa-stack-2x"></i><br><br>
+					    <label>Logout</label>
+					  </a>
+					<% end %>
+				</div>
       </ul>
     </aside>
 
@@ -52,3 +77,14 @@
     <%= javascript_include_tag "application" %>
   </body>
 </html>
+
+
+<% if session[:type] == "teacher" %>
+          <li class=""><%= link_to "Courses", courses_path %></li>
+          <li class=""><%= link_to "Students", students_path %></li>
+          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
+        <% elsif session[:type] == "student" %>
+          <li class=""><%= link_to "Courses", courses_path %></li>
+          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
+        <% else %>
+        <% end %>
