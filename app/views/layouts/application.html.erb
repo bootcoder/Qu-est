@@ -12,8 +12,43 @@
   </head>
 
   <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
 
-    <%= yield %>
+      <section class="middle tab-bar-section">
+        <h1 class="title">Qu-est</h1>
+      </section>
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <% if session[:type] == "teacher" %>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><a href="/students">Students</a></li>
+          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
+        <% elsif session[:type] == "student" %>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
+        <% else %>
+        <% end %>
+      </ul>
+    </aside>
+
+    <section class="main-section">
+      <%= yield %>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+
+    <%=  render partial: "layouts/footer" %>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

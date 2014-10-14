@@ -1,29 +1,34 @@
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Qu-est", root_path, class: "navbar-brand" %>
-    </div>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-    <% if session[:type] == "teacher" %>
-        <li class="nav-li"><a href="/courses">Courses</a></li>
-        <li class="nav-li"><a href="/students">Students</a></li>
-        <li class="nav-li"><%= link_to "Logout", log_out_path, method: :post %></li>
-      <% elsif session[:type] == "student" %>
-        <li class="nav-li"><a href="/courses">Courses</a></li>
-        <li class="nav-li"><%= link_to "Logout", log_out_path, method: :post %></li>
-      <% else %>
-      <% end %>
+      <section class="middle tab-bar-section">
+        <h1 class="title">Qu-est</h1>
+      </section>
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <% if session[:type] == "teacher" %>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><a href="/students">Students</a></li>
+          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
+        <% elsif session[:type] == "student" %>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
+        <% else %>
+        <% end %>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    </aside>
+
+    <section class="main-section">
+      <h1>Hello!</h1>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
