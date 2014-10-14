@@ -1,6 +1,6 @@
-// * {
-//   border: 1px solid red;
-// }
+/** {
+  border: 1px solid red;
+}*/
 
 body {
   background-image: url("/assets/background.png");
@@ -40,15 +40,6 @@ label {
   text-align: center;
   margin: 20px 0px;
 }
-
-.hidden {
-  margin-top: 25px;
-  text-align: center;
-}
-
-/*.sign_up {
-  display: inline;
-}*/
 
 .footer {
   position: absolute;

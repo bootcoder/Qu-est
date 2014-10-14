@@ -1,25 +1,71 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	  <title>Qu-Est</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	  <%= csrf_meta_tags %>
-	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	</head>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-	<body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-		<%= render partial: "layouts/header" %>
-		<div class="container">
-			<div class="eight columns offset-by-four">
-			<%= yield %>
-			</div>
-    </div>
+  <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
 
-    <%= render partial: "layouts/footer"  %>
+      <section class="middle tab-bar-section">
+        <h1 class="title"><%= link_to("Qu-est", root_path) %></h1>
+      </section>
+    </nav>
 
-	</body>
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <div class="vertical four-up margin-top-5P">
+				  <% if session[:type] == "teacher" %>
+					  <li class="item">
+					  	<%= link_to('<i class="fa fa-university fa-stack-2x"></i><br>Courses'.html_safe, courses_path) %>
+					  </li>
+					  <li class="item">
+						  <%= link_to('<i class="fa fa-users fa-stack-2x"></i><br>Students'.html_safe, students_path) %>
+					  </li>
+					  <li class="item">
+							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
+					  </li>
+					  <li class="item">
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout '.html_safe, log_out_path) %>
+					  </li>
+					<% else %>
+						<li class="item">
+					  	<%= link_to('<i class="fa fa-university fa-stack-2x"></i><br>Courses'.html_safe, courses_path) %>
+					  </li>
+					  <li class="item">
+							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
+					  </li>
+					  <li class="item">
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout'.html_safe, log_out_path) %>
+					  </li>
+					<% end %>
+				</div>
+      </ul>
+    </aside>
 
+    <section class="main-section">
+      <%= yield %>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+
+    <%=  render partial: "layouts/footer" %>
+
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

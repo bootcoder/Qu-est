@@ -1,13 +1,11 @@
 $(document).ready(function(){
-  
-  $(".add_class_btn").on("click", function(event) {
-  	console.log("add course btn");
-  	
-  })
 
-  $('#create_acc_link').on('click',function(e){
+  $('#create_acc_link').on('click', function(e){
     e.preventDefault();
-    $('.hidden').show();
-  } )
+    // console.log('create_btn');
+    $('#hidden-signups').show();
+    $('#create_acc_link').hide();
+    $('#login-form').hide();
+  });
 
-})
+});

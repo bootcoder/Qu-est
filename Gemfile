@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 
@@ -44,7 +44,7 @@ gem 'awesome_print'
 
 
 group :production  do
-  gem 'rails_12factor'  
+  gem 'rails_12factor'
 end
 
 group :development, :test do
