@@ -26,38 +26,30 @@
 
     <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
-        <div class="icon-bar large-vertical four-up">
+        <div class="vertical four-up margin-top-5P">
 				  <% if session[:type] == "teacher" %>
-					  <a class="item" href="/courses">
-						  <i class="fa fa-university fa-stack-2x"></i><br><br>
-					    <label>Courses</label>
-					  </a>
-					  <a class="item" href="/students">
-						  <i class="fa fa-users fa-stack-2x"></i><br><br>
-					    <label>Students</label>
-					  </a>
-					  <a class="item" href="/students">
-						  <i class="fa fa-pencil fa-stack-2x"></i><br><br>
-					    <label>Quizzes</label>
-					  </a>
-					  <a class="item" href="/">
-						  <i class="fa fa-sign-out fa-stack-2x"></i><br><br>
-					    <label>Logout</label>
-					  </a>
+					  <li class="item">
+					  	<%= link_to('<i class="fa fa-university fa-stack-2x"></i><br>Courses'.html_safe, courses_path) %>
+					  </li>
+					  <li class="item">
+						  <%= link_to('<i class="fa fa-users fa-stack-2x"></i><br>Students'.html_safe, students_path) %>
+					  </li>
+					  <li class="item">
+							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
+					  </li>
+					  <li class="item">
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout '.html_safe, log_out_path) %>
+					  </li>
 					<% else %>
-						<a class="item" href="/courses">
-						  <i class="fa fa-university fa-stack-2x"></i><br><br>
-					    <label>Courses</label>
-					  </a>
-					  <a class="item" href="/students">
-						  <i class="fa fa-pencil fa-stack-2x"></i><br><br>
-					    <label>Quizzes</label>
-					  </a>
-					  </a>
-					  <a class="item" href="/">
-						  <i class="fa fa-sign-out fa-stack-2x"></i><br><br>
-					    <label>Logout</label>
-					  </a>
+						<li class="item">
+					  	<%= link_to('<i class="fa fa-university fa-stack-2x"></i><br>Courses'.html_safe, courses_path) %>
+					  </li>
+					  <li class="item">
+							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
+					  </li>
+					  <li class="item">
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout'.html_safe, log_out_path) %>
+					  </li>
 					<% end %>
 				</div>
       </ul>
@@ -77,14 +69,3 @@
     <%= javascript_include_tag "application" %>
   </body>
 </html>
-
-
-<% if session[:type] == "teacher" %>
-          <li class=""><%= link_to "Courses", courses_path %></li>
-          <li class=""><%= link_to "Students", students_path %></li>
-          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
-        <% elsif session[:type] == "student" %>
-          <li class=""><%= link_to "Courses", courses_path %></li>
-          <li class=""><%= link_to "Logout", log_out_path, method: :post %></li>
-        <% else %>
-        <% end %>
