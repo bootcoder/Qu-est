@@ -35,20 +35,20 @@
 						  <%= link_to('<i class="fa fa-users fa-stack-2x"></i><br>Students'.html_safe, students_path) %>
 					  </li>
 					  <li class="item">
-							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
+							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>
 					  </li>
 					  <li class="item">
-						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout '.html_safe, log_out_path) %>
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout '.html_safe, log_out_path, method: :destroy) %>
 					  </li>
 					<% else %>
 						<li class="item">
 					  	<%= link_to('<i class="fa fa-university fa-stack-2x"></i><br>Courses'.html_safe, courses_path) %>
 					  </li>
 					  <li class="item">
-							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>						  
+							<%= link_to('<i class="fa fa-pencil fa-stack-2x"></i><br>Quizzes'.html_safe, quizzes_path) %>
 					  </li>
 					  <li class="item">
-						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout'.html_safe, log_out_path) %>
+						  <%= link_to('<i class="fa fa-sign-out fa-stack-2x"></i><br>Logout'.html_safe, log_out_path, method: :destroy) %>
 					  </li>
 					<% end %>
 				</div>
