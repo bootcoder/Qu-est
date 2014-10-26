@@ -1,4 +1,3 @@
-<div class="spacer"></div>
 <div class="row">
   
   <div class="row">
@@ -8,19 +7,21 @@
   </div>
 
   <div class="row" id='login-form'>
+    <%= form_tag("/sessions/create", method: "post", class: 'form-login', role: 'form') do %>
     <div class="small-8 small-centered columns">
-      <%= form_tag("/sessions/create", method: "post", class: 'form-login', role: 'form') do %>
+      <h4>Please Login to continue</h4>
       <label for="email"></label><input type="text" name="email" placeholder="email" id="email" class="form-control">
       <label for="password"></label><input type="password" name="password" placeholder="password" id="password" class="form-control">
-      <label>&nbsp; </label><input class="button btn-lg btn-primary btn-block login" type="submit" value="Login">
+      <div class="spacer"></div>
+      <input class="button button-round button-wide login" type="submit" value="Login">
       <% end %>
+
 
     </div>
   </div>
-
   <div class="row">
-    <div class="signup small-8 small-centered columns">
-      <a href='#' class="js-partial button btn-lg btn-primary btn-block login" id="create_acc_link">Sign Up</a>
+    <div class="signup small-8 small-centered columns form-control">
+    <input class="button button-round button-wide login" type="submit" value="Sign Up" id="create_acc_link">
       <div class="center_buttons" id="hidden-signups" style='display: none;'>
         <%= button_to 'Teacher', new_teacher_path, class: 'sign_up sidebtn in-line', method: :get %>
         <%= button_to 'Student', new_student_path, class: 'sign_up sidebtn in-line', method: :get %>

@@ -1,6 +1,6 @@
-/** {
-  border: 1px solid red;
-}*/
+// * {
+//   border: 1px solid red;
+// }
 
 body {
   background-image: url("/assets/background.png");
@@ -35,12 +35,6 @@ label {
    color: #696969;
 }
 
-#create_acc_link {
-  display: block;
-  text-align: center;
-  margin: 20px 0px;
-}
-
 .footer {
   position: absolute;
   margin-top: 215px;
@@ -73,8 +67,9 @@ label {
   width: 98%;
 }
 .button_to div {
-display: inline;
+  display: inline;
 }
+
 .sidebtn {
   color: #ffffff;
   background-color: #7eb282;
@@ -165,11 +160,14 @@ a.delete-btn {
   margin-top: 10%;
 }
 
+input.button-wide {
+  width: 100%;
+}
 
-/*.button {
-  border-radius: 5px;
+input.button-round {
+  border-radius: 10px;
 }
 
 .button a {
   text-decoration: none;
-}*/
+}
