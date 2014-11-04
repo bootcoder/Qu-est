@@ -1,25 +1,31 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+<div class="small-8 large-5 large-centered small-centered columns">
+  <%= form_for(@course) do |f| %>
+    <% if @course.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <br>
+    <div class="field">
+      <%= f.label :name, "Course Name", class: "label em12" %><br>
+      <%= f.text_field :name %>
     </div>
+    <div class="field">
+      <%= f.label :description, "Course Description", class: "label em12" %><br>
+      <%= f.text_area :description, cols: "20", rows: "5" %>
+    </div>
+    <ul class="round button-group even-2">
+      <li><%= f.submit "Create", class: "button" %></li>
+      <li><%= link_to 'Back', courses_path, class: "button" %></li>
+    </ul>
+    
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_area :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
